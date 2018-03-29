@@ -10,10 +10,17 @@
 !   drop
 !   [ even? ] filter sum .
 
-{ 1 2 } ! Initial data for the sequence
-  [ dup last2 + suffix ] ! take the last two values, sum and push back
-  lfrom-by ! in a lazy manner
-  [ last 4000000 < ] lwhile
-  list>array last
+! { 1 2 } ! Initial data for the sequence
+!   [ dup last2 + suffix ] ! take the last two values, sum and push back
+!   lfrom-by ! in a lazy manner
+!   [ last 4000000 < ] lwhile
+!   list>array last
+!   [ even? ] filter
+!   sum .
+
+{ 1 } 2
+  [ dup 4000000 < ]
+  [ suffix dup last2 + ] while
+  drop
   [ even? ] filter
   sum .
